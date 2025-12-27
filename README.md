@@ -1,11 +1,9 @@
-# SITE-DAS-NOTAS
-Sistema Web Simples para Consulta de Notas
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Notas - Escola</title>
+    <title>Consulta de Notas - Sistema Seguro</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -13,33 +11,70 @@ Sistema Web Simples para Consulta de Notas
     <div class="container">
         <header>
             <div class="logo">
-                <i class="fas fa-graduation-cap"></i>
-                <h1>Sistema de Consulta de Notas</h1>
+                <i class="fas fa-shield-alt"></i>
+                <div>
+                    <h1>Sistema Acadêmico Seguro</h1>
+                    <p class="subtitle">Acesso restrito por nome completo e CPF</p>
+                </div>
             </div>
-            <p class="subtitle">Digite seu nome completo para visualizar suas notas</p>
+            <div class="security-info">
+                <i class="fas fa-lock"></i>
+                <span>Dados protegidos por criptografia</span>
+            </div>
         </header>
 
         <main>
-            <div class="search-box">
-                <div class="input-group">
-                    <i class="fas fa-user"></i>
+            <div class="login-container">
+                <div class="login-header">
+                    <h2><i class="fas fa-user-check"></i> Autenticação do Aluno</h2>
+                    <p>Para sua segurança, informe ambos os dados</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nomeAluno">
+                        <i class="fas fa-user-graduate"></i> Nome Completo
+                    </label>
                     <input type="text" 
                            id="nomeAluno" 
-                           placeholder="Ex: Maria Silva Santos"
-                           autocomplete="off">
-                    <button id="buscarBtn" onclick="buscarNotas()">
-                        <i class="fas fa-search"></i> Buscar Notas
+                           placeholder="Digite seu nome completo"
+                           autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="cpfAluno">
+                        <i class="fas fa-id-card"></i> CPF
+                    </label>
+                    <div class="cpf-input">
+                        <input type="text" 
+                               id="cpfAluno" 
+                               placeholder="000.000.000-00"
+                               maxlength="14"
+                               autocomplete="off">
+                        <button class="info-btn" title="Formato: 000.000.000-00">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button id="buscarBtn" onclick="buscarNotas()" class="btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Acessar Boletim
+                    </button>
+                    <button onclick="limparFormulario()" class="btn-secondary">
+                        <i class="fas fa-eraser"></i> Limpar
                     </button>
                 </div>
-                <div class="hint">
-                    <i class="fas fa-info-circle"></i>
-                    Digite seu nome completo como está no sistema acadêmico
+
+                <div class="security-notice">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Seus dados são confidenciais. Não compartilhe com terceiros.</p>
                 </div>
             </div>
 
             <div id="loading" class="loading" style="display: none;">
                 <div class="spinner"></div>
-                <p>Buscando suas notas...</p>
+                <p>Verificando credenciais...</p>
+                <p class="loading-sub">Aguarde, estamos validando seus dados</p>
             </div>
 
             <div id="resultado" class="resultado" style="display: none;">
@@ -49,11 +84,40 @@ Sistema Web Simples para Consulta de Notas
             <div id="erro" class="erro" style="display: none;">
                 <!-- Mensagens de erro serão exibidas aqui -->
             </div>
+
+            <div class="instructions">
+                <h3><i class="fas fa-question-circle"></i> Instruções de Acesso</h3>
+                <ol>
+                    <li>Informe seu nome completo <strong>exatamente</strong> como está cadastrado</li>
+                    <li>Digite seu CPF com pontos e traço (formato: 000.000.000-00)</li>
+                    <li>Clique em "Acessar Boletim"</li>
+                    <li>Caso tenha problemas, entre em contato com a secretaria</li>
+                </ol>
+            </div>
         </main>
 
         <footer>
-            <p><i class="fas fa-shield-alt"></i> Suas notas são informações privadas. Não compartilhe este link.</p>
-            <p class="copyright">© 2024 Escola XYZ - Sistema de Consulta de Notas</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-shield-alt"></i> Segurança</h4>
+                    <p>SSL 256-bit</p>
+                    <p>LGPD Compliant</p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-clock"></i> Horário de Acesso</h4>
+                    <p>24 horas por dia</p>
+                    <p>7 dias por semana</p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-phone-alt"></i> Suporte</h4>
+                    <p>secretaria@escola.edu.br</p>
+                    <p>(11) 99999-9999</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2024 Sistema Acadêmico Seguro - v2.0 | Todos os direitos reservados</p>
+                <p class="disclaimer">Este sistema é para uso exclusivo dos alunos matriculados.</p>
+            </div>
         </footer>
     </div>
 
